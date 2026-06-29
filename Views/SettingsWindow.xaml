@@ -1,0 +1,188 @@
+<Window x:Class="PSAutomationToolkit.Views.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Settings — PS Automation Toolkit Pro"
+        Height="480" Width="520"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="{StaticResource AppBackground}"
+        TextElement.Foreground="{StaticResource TextPrimary}"
+        FontFamily="Segoe UI">
+
+    <Grid Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="64"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0"
+                Background="{StaticResource SidebarBackground}"
+                BorderBrush="{StaticResource BorderColor}"
+                BorderThickness="0,0,0,1">
+            <StackPanel Margin="20,0" VerticalAlignment="Center">
+                <TextBlock Text="⚙  Settings" FontSize="16" FontWeight="SemiBold"/>
+                <TextBlock Text="Configure PS Automation Toolkit Pro" FontSize="12"
+                           Foreground="{StaticResource TextSecondary}"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Settings Body -->
+        <ScrollViewer Grid.Row="1" Padding="20,16">
+            <StackPanel>
+
+                <!-- ── Appearance ──────────────────────────────────── -->
+                <TextBlock Text="APPEARANCE" Style="{StaticResource SectionHeaderStyle}"
+                           Margin="0,0,0,12"/>
+
+                <Border Style="{StaticResource CardStyle}" Margin="0,0,0,16">
+                    <StackPanel>
+                        <DockPanel Margin="0,0,0,12">
+                            <StackPanel DockPanel.Dock="Left">
+                                <TextBlock Text="Dark Theme" FontSize="14" FontWeight="SemiBold"/>
+                                <TextBlock Text="Use dark color scheme" FontSize="12"
+                                           Foreground="{StaticResource TextSecondary}"/>
+                            </StackPanel>
+                            <ToggleButton DockPanel.Dock="Right"
+                                          IsChecked="{Binding IsDarkTheme}"
+                                          HorizontalAlignment="Right"
+                                          VerticalAlignment="Center"
+                                          Width="48" Height="24"
+                                          Style="{DynamicResource MaterialDesignSwitchToggleButton}"/>
+                        </DockPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- ── Script Options ──────────────────────────────── -->
+                <TextBlock Text="SCRIPT OPTIONS" Style="{StaticResource SectionHeaderStyle}"
+                           Margin="0,0,0,12"/>
+
+                <Border Style="{StaticResource CardStyle}" Margin="0,0,0,16">
+                    <StackPanel>
+                        <DockPanel>
+                            <StackPanel DockPanel.Dock="Left">
+                                <TextBlock Text="Show Advanced Scripts" FontSize="14" FontWeight="SemiBold"/>
+                                <TextBlock Text="Display Senior-level complexity scripts" FontSize="12"
+                                           Foreground="{StaticResource TextSecondary}"/>
+                            </StackPanel>
+                            <ToggleButton DockPanel.Dock="Right"
+                                          IsChecked="{Binding ShowAdvancedScripts}"
+                                          HorizontalAlignment="Right"
+                                          VerticalAlignment="Center"
+                                          Width="48" Height="24"
+                                          Style="{DynamicResource MaterialDesignSwitchToggleButton}"/>
+                        </DockPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- ── File Locations ──────────────────────────────── -->
+                <TextBlock Text="FILE LOCATIONS" Style="{StaticResource SectionHeaderStyle}"
+                           Margin="0,0,0,12"/>
+
+                <Border Style="{StaticResource CardStyle}" Margin="0,0,0,16">
+                    <StackPanel>
+                        <TextBlock Text="Default Save Directory" FontSize="14" FontWeight="SemiBold"
+                                   Margin="0,0,0,4"/>
+                        <TextBlock Text="Where .ps1 and .txt files are saved by default"
+                                   FontSize="12" Foreground="{StaticResource TextSecondary}"
+                                   Margin="0,0,0,10"/>
+                        <DockPanel>
+                            <Button DockPanel.Dock="Right"
+                                    Command="{Binding BrowseSaveDirectoryCommand}"
+                                    Style="{StaticResource IconButtonStyle}"
+                                    Margin="8,0,0,0" Padding="12,8">
+                                <TextBlock Text="Browse…" FontSize="12"/>
+                            </Button>
+                            <Border Background="{StaticResource AppBackground}"
+                                    BorderBrush="{StaticResource BorderColor}"
+                                    BorderThickness="1" CornerRadius="6"
+                                    Padding="10,8">
+                                <TextBlock Text="{Binding DefaultSaveDirectory}"
+                                           FontSize="12" FontFamily="Consolas"
+                                           Foreground="{StaticResource AccentBlue}"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Border>
+                        </DockPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- ── About ───────────────────────────────────────── -->
+                <TextBlock Text="ABOUT" Style="{StaticResource SectionHeaderStyle}"
+                           Margin="0,0,0,12"/>
+
+                <Border Style="{StaticResource CardStyle}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Width="48" Height="48"
+                                CornerRadius="10" Background="#0078D4"
+                                Margin="0,0,14,0">
+                            <TextBlock Text="PS" FontSize="16" FontWeight="Bold"
+                                       Foreground="White"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Border>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="PS Automation Toolkit Pro" FontSize="14" FontWeight="SemiBold"/>
+                            <TextBlock Text="Version 1.0.0  •  .NET 8 / WPF" FontSize="12"
+                                       Foreground="{StaticResource TextSecondary}"/>
+                            <TextBlock Text="Professional PowerShell script generator for IT personnel"
+                                       FontSize="11" Foreground="{StaticResource TextSecondary}"
+                                       Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Footer Buttons -->
+        <Border Grid.Row="2"
+                Background="{StaticResource SidebarBackground}"
+                BorderBrush="{StaticResource BorderColor}"
+                BorderThickness="0,1,0,0">
+            <DockPanel Margin="20,0">
+                <Button DockPanel.Dock="Right"
+                        Command="{Binding SaveCommand}"
+                        Click="Save_Click"
+                        Padding="20,8" FontSize="13" FontWeight="SemiBold"
+                        Cursor="Hand">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#0078D4"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}"
+                                                CornerRadius="6"
+                                                Padding="{TemplateBinding Padding}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                                              VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#006CBE"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                    <TextBlock Text="Save Settings"/>
+                </Button>
+                <Button DockPanel.Dock="Right"
+                        Click="Cancel_Click"
+                        Style="{StaticResource IconButtonStyle}"
+                        Margin="0,0,8,0" Padding="16,8">
+                    <TextBlock Text="Cancel" FontSize="13"/>
+                </Button>
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>
