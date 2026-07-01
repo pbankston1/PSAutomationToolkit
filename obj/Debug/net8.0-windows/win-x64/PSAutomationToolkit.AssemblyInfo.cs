@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Professional PowerShell Script Generator for IT Personnel")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+74d60baa4e43bf459941d783a2e34297050130c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b5e4d5ecdf57c532cb06bb54ff44d5ffeaac0b4d")]
 [assembly: System.Reflection.AssemblyProductAttribute("PS Automation Toolkit Pro")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PSAutomationToolkit")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
